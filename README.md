@@ -2,9 +2,6 @@
 
 Aplicación web de lista de tareas desarrollada con Django para el proyecto final de la Python en la Universidad Autonoma de Baja California. Utiliza una base de datos PostgreSQL para almacenar y gestionar las tareas.
 
-## <h2 align="center">Pagina Principal:</h2>
-![ImagenInterfaz](tasks/static/preview/main.png)
-
 ## Características
 
 - **Agregar Tareas**: Permite a los usuarios agregar nuevas tareas a la lista.
@@ -80,3 +77,12 @@ Aplicación web de lista de tareas desarrollada con Django para el proyecto fina
 - **PostgreSQL**: Sistema de gestión de base de datos relacional utilizado para almacenar y gestionar las tareas.
 - **Bootstrap**: Framework front-end utilizado para el diseño y la interfaz de usuario del proyecto.
 - **HTML y CSS**: Utilizados para la estructura y el estilo de las plantillas del proyecto.
+
+## Cursos de apoyo vistos para realizar este proyecto:
+1. <a href="https://www.youtube.com/watch?v=PgDKQqvUn8U&list=PL8Loxdz4U5rqhjG3xAeE5SAmeeJJ5zQY0">https://www.youtube.com/watch?v=PgDKQqvUn8U&list=PL8Loxdz4U5rqhjG3xAeE5SAmeeJJ5zQY0</a>
+2. <a href="https://youtu.be/T1intZyhXDU?si=a7GxNfYqMGsVBkAj">https://youtu.be/T1intZyhXDU?si=a7GxNfYqMGsVBkAj</a>
+
+## Desarrolladores: 
+1. Pedro Balderrama
+2. Gabriel Orlando
+3. Jesus Amador
