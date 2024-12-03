@@ -8,20 +8,20 @@
                 {% csrf_token %}
                 <!-- Formulario -->
                 <div class="card shadow p-4 mb-4 bg-light rounded">
-                    <h3 class="text-center">Edit task</h3>
+                    <h3 class="text-center">Editar tarea</h3>
                     <hr>
                     <div class="mb-3">
-                        <label for="id_title" class="form-label">Title:</label>
+                        <label for="id_title" class="form-label">Titulo:</label>
                         <input type="text" id="id_title" name="title" class="form-control"
                         value="{{ form.title.value|default_if_none:'' }}" placeholder="Write a title" required>
                     </div>
             
                     <div class="mb-3">
-                        <label for="id_description" class="form-label">Description:</label>
+                        <label for="id_description" class="form-label">Descripcion:</label>
                         <textarea id="id_description" name="description" class="form-control" rows="3"
                          placeholder="Write a description" required>{{ form.description.value|default_if_none:'' }}</textarea>
                     </div>
-                    <button type="submit" class="btn btn-success">Save changes</button>
+                    <button type="submit" class="btn btn-success">Guardar cambios</button>
                 </div>
             </form>
         </div>

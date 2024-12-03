@@ -64,14 +64,11 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tasksapp',
-        'USER': 'postgres',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3', 
     }
 }
+
 
 # Redirection after login/logout
 LOGIN_REDIRECT_URL = '/tasks/'
