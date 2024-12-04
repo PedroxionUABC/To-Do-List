@@ -1,13 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
 body {
     background-color: #f8f1e5; /* Cambio de fondo a un tono más claro */
     color: #6b4f47; /* Color de texto más oscuro para mejor legibilidad */
+    font-family: 'Poppins', sans-serif;
+}
+
+.task-title {
+    font-size: 3.2rem;
 }
 
 header {
-    background-color: rgb(215, 126, 109);
-    padding: 5px;
-    margin: 20px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+hr {
+    border: none;
+    height: 3px;
+    background-color: #fff;
+    width: 60px;
+}
+
 
 .task-card {
     transition: transform 0.2s; /* Transición suave al pasar el cursor */
