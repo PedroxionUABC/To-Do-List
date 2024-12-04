@@ -1,10 +1,10 @@
 body {
-    background-color: #f0f0f0; /* Cambio de fondo a un tono más claro */
-    color: #333; /* Color de texto más oscuro para mejor legibilidad */
+    background-color: #f8f1e5; /* Cambio de fondo a un tono más claro */
+    color: #6b4f47; /* Color de texto más oscuro para mejor legibilidad */
 }
 
 header {
-    background-color: rgb(209, 209, 209);
+    background-color: rgb(215, 126, 109);
     padding: 5px;
     margin: 20px;
 }

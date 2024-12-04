@@ -10,14 +10,7 @@
 </head>
 <body>
     <header class="text-center mb-5">
-        <h1 class="task-title" style="color: rgb(0, 0, 0); border-radius: 10px; font-size:3.2rem;">Tareas</h1>
-        <!-- Logout -->
-        {% if user.is_authenticated %}
-        <form action="{% url 'logout' %}" method="POST" class="d-inline">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger float-end">Cerrar sesion</button>
-        </form>
-        {% endif %}
+        <h1 class="task-title" style="color: rgb(72, 37, 0); border-radius: 10px; font-size:3.2rem;">Tareas</h1>
     </header>
     <div class="container mt-5">
         {% block content %}
@@ -37,10 +30,10 @@
                             <label for="description" class="form-label">Descripcion:</label>
                             <textarea id="description" name="description" class="form-control" rows="3" placeholder="Write a description" required></textarea>
                         </div>
-                        <button class="btn btn-success w-100">Guardar</button>
+                        <button class="btn btn-success w-100" style="background-color: #28a745">Guardar</button>
                     </form>
                 </div>
-
+            
                 <!-- Filtro -->
                 <div class="card shadow mb-4 bg-light rounded">
                     <div class="card-body">
@@ -55,11 +48,19 @@
                                     <label class="form-check-label" for="pending">Tareas pendientes</label>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary w-50">Filtro</button>
+                            <button type="submit" class="btn btn-primary w-50" style="background-color: #0056b3">Filtro</button>
                         </form>
                     </div>
                 </div>
-            </div>
+            
+                <!-- Botón Cerrar sesión -->
+                {% if user.is_authenticated %}
+                <form action="{% url 'logout' %}" method="POST" class="mt-3">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger w-100">Cerrar sesión</button>
+                </form>
+                {% endif %}
+            </div>            
 
             <!-- Lista de tareas -->
             <div class="col-md-7">
@@ -88,11 +89,11 @@
                                 <div class="d-flex">
                                     <form action="{% url 'edit_task' task.id %}" method="GET">
                                         {% csrf_token %}
-                                        <button type="submit" class="btn btn-primary me-2">Editar</button>
+                                        <button type="submit" class="btn btn-primary me-2" style="background-color: #85c1e9 ; color: black;">Editar</button>
                                     </form>
                                     <form action="{% url 'delete_task' task.id %}" method="POST" class="d-inline">
                                         {% csrf_token %}
-                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        <button type="submit" class="btn btn-danger" style="background-color: rgb(185, 6, 0); color: white;">Eliminar</button>
                                     </form>
                                 </div>
                             </div>
