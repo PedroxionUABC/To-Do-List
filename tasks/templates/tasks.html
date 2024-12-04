@@ -18,17 +18,17 @@
             <!-- Formulario de agregar tarea -->
             <div class="col-md-5">
                 <div class="card shadow p-4 mb-5 bg-light rounded">
-                    <h3 class="text-center">Create task</h3>
+                    <h3 class="text-center">Crear tarea</h3>
                     <hr>
                     <form action="{% url 'create_task' %}" method="POST">
                         {% csrf_token %}
                         <div class="mb-3">
                             <label for="title" class="form-label">Titulo:</label>
-                            <input type="text" id="title" name="title" class="form-control" placeholder="Write a title" required>
+                            <input type="text" id="title" name="title" class="form-control" placeholder="Escribe un titulo" required>
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Descripcion:</label>
-                            <textarea id="description" name="description" class="form-control" rows="3" placeholder="Write a description" required></textarea>
+                            <textarea id="description" name="description" class="form-control" rows="3" placeholder="Escribe una descripción" required></textarea>
                         </div>
                         <button class="btn btn-success w-100" style="background-color: #28a745">Guardar</button>
                     </form>
@@ -77,9 +77,9 @@
                                         <input class="form-check-input" type="checkbox" id="task-{{ task.id }}" name="completed" {% if task.completed %}checked{% endif %} onchange="this.form.submit()">
                                         <label class="form-check-label" for="task-{{ task.id }}">
                                             {% if task.completed %}
-                                                <span class="badge bg-success text-white">Completed</span>
+                                                <span class="badge bg-success text-white">Completada</span>
                                             {% else %}
-                                                <span class="badge bg-warning text-dark">Pending</span>
+                                                <span class="badge bg-warning text-dark">Pendiente</span>
                                             {% endif %}
                                         </label>
                                     </div>
