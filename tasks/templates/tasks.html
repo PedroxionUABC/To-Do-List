@@ -28,6 +28,7 @@
     <div class="container mt-5">
         {% block content %}
         <div class="row">
+            <!-- Formulario para Crear Tarea -->
             <div class="col-md-5">
                 <div class="row">
                     <div class="col-md-12 mb-4">
@@ -38,20 +39,22 @@
                                 {% csrf_token %}
                                 <div class="mb-3">
                                     <label for="title" class="form-label">Título:</label>
-                                    <input type="text" id="title" name="title" class="form-control" placeholder="Máximo 100 caracteres" required>
+                                    <input type="text" id="title" name="title" class="form-control" placeholder="Máximo 100 caracteres" maxlength="100" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Descripción:</label>
-                                    <textarea id="description" name="description" class="form-control" rows="3" placeholder="Escribe una descripción" required></textarea>
+                                    <textarea id="description" name="description" class="form-control" rows="3" placeholder="Máximo 1000 caracteres" maxlength="1000" required></textarea>
                                 </div>
-                                <button class="btn btn-success w-100" style="background-color: #28a745">Guardar</button>
+                                <button class="btn btn-success w-100 btn-lg" style="background-color: #28a745">Guardar</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-        
+
+            <!-- Lista de Tareas y Filtros -->
             <div class="col-md-7">
+                <!-- Filtros -->
                 <div class="col-md-12 mb-4">
                     <div class="card shadow p-3 bg-light rounded">
                         <h5 class="text-center mb-1">Filtros</h5>
@@ -65,46 +68,59 @@
                                 <input class="form-check-input" type="checkbox" id="pending" name="pending" {% if request.GET.pending %}checked{% endif %}>
                                 <label class="form-check-label" for="pending">Tareas pendientes</label>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100" style="background-color: #0056b3">Filtrar</button>
+                            <button type="submit" class="btn btn-primary w-100 btn-lg" style="background-color: #0056b3">Filtrar</button>
                         </form>
                     </div>
                 </div>
-                
-        
+
+                <!-- Lista de Tareas -->
                 {% for task in tasks %}
-                    <div class="card mb-3 shadow-sm task-card">
-                        <div class="card-body">
+                <div class="card mb-3 shadow-sm task-card">
+                    <div class="card-body">
+                        <!-- Contenedor para el título y el checkbox -->
+                        <div class="d-flex justify-content-between align-items-center mb-3">
                             <h4 class="card-title text-primary">{{ task.title }}</h4>
-                            <p class="card-text">{{ task.description }}</p>
-                            <div class="d-flex align-items-center">
-                                
-                                <form action="{% url 'task_completed' task.id %}" method="POST" class="me-auto">
-                                    {% csrf_token %}
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="task-{{ task.id }}" name="completed" {% if task.completed %}checked{% endif %} onchange="this.form.submit()">
-                                        <label class="form-check-label" for="task-{{ task.id }}">
-                                            {% if task.completed %}
-                                                <span class="badge bg-success text-white">Completada</span>
-                                            {% else %}
-                                                <span class="badge bg-warning text-dark">Pendiente</span>
-                                            {% endif %}
-                                        </label>
-                                    </div>
-                                </form>
-                                
-                                <div class="d-flex">
-                                    <form action="{% url 'edit_task' task.id %}" method="GET" class="me-2">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn btn-primary" style="background-color: #85c1e9; color: black;">Editar</button>
-                                    </form>
-                                    <form action="{% url 'delete_task' task.id %}" method="POST">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn btn-danger" style="background-color: rgb(185, 6, 0); color: white;">Eliminar</button>
-                                    </form>
+                            <form action="{% url 'task_completed' task.id %}" method="POST">
+                                {% csrf_token %}
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="task-{{ task.id }}" name="completed" {% if task.completed %}checked{% endif %} onchange="this.form.submit()">
+                                    <label class="form-check-label" for="task-{{ task.id }}">
+                                        {% if task.completed %}
+                                            <span class="badge bg-success text-white">Completada</span>
+                                        {% else %}
+                                            <span class="badge bg-warning text-dark">Pendiente</span>
+                                        {% endif %}
+                                    </label>
                                 </div>
-                            </div>
+                            </form>
+                        </div>
+
+                        <!-- Descripción -->
+                        <p class="card-text">{{ task.description }}</p>
+
+                        <!-- Fechas -->
+                        <p class="card-text">
+                            <small class="text-muted">Creada el: {{ task.created_at|date:"d/m/Y H:i" }}</small><br>
+                            <small class="text-muted">Última modificación: {{ task.updated_at|date:"d/m/Y H:i" }}</small>
+                        </p>
+
+                        <!-- Botones de Editar y Eliminar -->
+                        <div class="d-flex justify-content-end mt-3">
+                            <form action="{% url 'edit_task' task.id %}" method="GET" class="me-2">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary btn-icon" title="Editar">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+                            </form>
+                            <form action="{% url 'delete_task' task.id %}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta tarea?');">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-icon" title="Eliminar">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
+                </div>
                 {% empty %}
                     <h2 class="text-center text-muted">Sin tareas.</h2>
                 {% endfor %}

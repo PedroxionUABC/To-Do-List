@@ -1,9 +1,14 @@
+# tasks/models.py
 from django.db import models
 from django.contrib.auth.models import User
 
-# Modelo de una tarea
 class Task(models.Model):
     title = models.CharField(max_length=100)
-    description = models.TextField(blank=True)
+    description = models.TextField(max_length=1000)
     completed = models.BooleanField(default=False)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)  # Relación con el usuario
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title

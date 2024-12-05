@@ -11,17 +11,17 @@
                     <h3 class="text-center">Editar tarea</h3>
                     <hr>
                     <div class="mb-3">
-                        <label for="id_title" class="form-label">Titulo:</label>
+                        <label for="id_title" class="form-label">Título:</label>
                         <input type="text" id="id_title" name="title" class="form-control"
-                        value="{{ form.title.value|default_if_none:'' }}" placeholder="Write a title" required>
+                        value="{{ form.title.value|default_if_none:'' }}" placeholder="Máximo 100 caracteres" maxlength="100" required>
                     </div>
-            
+
                     <div class="mb-3">
-                        <label for="id_description" class="form-label">Descripcion:</label>
+                        <label for="id_description" class="form-label">Descripción:</label>
                         <textarea id="id_description" name="description" class="form-control" rows="3"
-                         placeholder="Write a description" required>{{ form.description.value|default_if_none:'' }}</textarea>
+                         placeholder="Máximo 1000 caracteres" maxlength="1000" required>{{ form.description.value|default_if_none:'' }}</textarea>
                     </div>
-                    <button type="submit" class="btn btn-success">Guardar cambios</button>
+                    <button type="submit" class="btn btn-success btn-lg" style="background-color: #28a745">Guardar cambios</button>
                 </div>
             </form>
         </div>
